@@ -1,0 +1,14 @@
+## Interface: 30000
+
+## Title: QTrackerPosition
+## Notes: Reposition the Achievement and Quest Watcher/Tracker frames
+## Author: Quaiche
+## Version: 1.0
+## X-License: Apache 2.0
+## X-Category: User Interface Enchancements
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+QTrackerPosition.lua
+
