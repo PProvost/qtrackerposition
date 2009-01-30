@@ -19,8 +19,6 @@ limitations under the License.
 local f = CreateFrame("Frame")
 f:SetScript("OnEvent", function(self, event, ...) if self[event] then return self[event](self, event, ...) end end)
 
-
-
 function f:PLAYER_LOGIN()
 	QuestWatchFrame:ClearAllPoints();
 	QuestWatchFrame:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -195,-25)
@@ -36,3 +34,4 @@ function f:PLAYER_LOGIN()
 end
 
 if IsLoggedIn() then f:PLAYER_LOGIN() else f:RegisterEvent("PLAYER_LOGIN") end
+
