@@ -1,8 +1,10 @@
-QTrackerPosition is simply repositions my quest watcher and achievement watcher frames to where I wanted them.
+QTrackerPosition is simply repositions the quest watcher, achievement watcher and achievement
+alert frames to where I want them.
 
 * Achievement tracker is near the top, about 1/3 of the way over from the left
 * Quest tracker is near the top, about 1/3 of the way over from the right
+* Achievement alert frame is centered near the top
 
-I might make the position configurable some day, but for now they are hard coded. If you don't like the positions, 
-open the code and change em!
+I might make the positions configurable some day, but for now they are hard coded. If you don't 
+like the positions, open the code and change em!
 
