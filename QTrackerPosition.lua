@@ -19,18 +19,32 @@ limitations under the License.
 local f = CreateFrame("Frame")
 f:SetScript("OnEvent", function(self, event, ...) if self[event] then return self[event](self, event, ...) end end)
 
+local orig_AchievementAlertFrame_FixAnchors
+local function new_AchievementAlertFrame_FixAnchors(...)
+	AchievementAlertFrame1:ClearAllPoints()
+	AchievementAlertFrame1:SetPoint("TOP", UIParent, "TOP", 0, -25)
+	AchievementAlertFrame2:ClearAllPoints()
+	AchievementAlertFrame2:SetPoint("TOP", AchievementAlertFrame1, "BOTTOM", 0, -5)
+end
+
 function f:PLAYER_LOGIN()
+	-- Position the QuestWatchFrame
 	QuestWatchFrame:ClearAllPoints();
 	QuestWatchFrame:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -195,-25)
 	QuestWatchFrame.SetPoint = function() end
 	QuestWatchFrame.ClearAllPoints = function() end
 
+	-- Position the AchievementWatchFrame
 	AchievementWatchFrame:ClearAllPoints();
 	AchievementWatchFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 195,-25)
 	AchievementWatchFrame:SetWidth(AchievementWatchFrame.desiredWidth or ACHIEVEMENTWATCH_MAXWIDTH);
 	AchievementWatchFrame.SetPoint = function() end
 	AchievementWatchFrame.ClearAllPoints = function() end
 	AchievementWatchFrame.SetWidth = function() end
+
+	-- Hook AchievementAlertFrame_FixAnchors to reposition it where we want
+	old_AchievementAlertFrame_FixAnchors = AchievementAlertFrame_FixAnchors
+	AchievementAlertFrame_FixAnchors = new_AchievementAlertFrame_FixAnchors
 end
 
 if IsLoggedIn() then f:PLAYER_LOGIN() else f:RegisterEvent("PLAYER_LOGIN") end
