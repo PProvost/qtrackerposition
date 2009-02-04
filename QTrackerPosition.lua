@@ -21,10 +21,16 @@ f:SetScript("OnEvent", function(self, event, ...) if self[event] then return sel
 
 local orig_AchievementAlertFrame_FixAnchors
 local function new_AchievementAlertFrame_FixAnchors(...)
-	AchievementAlertFrame1:ClearAllPoints()
-	AchievementAlertFrame1:SetPoint("TOP", UIParent, "TOP", 0, -25)
-	AchievementAlertFrame2:ClearAllPoints()
-	AchievementAlertFrame2:SetPoint("TOP", AchievementAlertFrame1, "BOTTOM", 0, -5)
+	local fr1, fr2 = AchievementAlertFrame1, AchievementAlertFrame2
+	if fr1 then
+		fr1:ClearAllPoints()
+		fr1:SetPoint("TOP", UIParent, "TOP", 0, -25)
+	end
+
+	if fr2 then
+		fr2:ClearAllPoints()
+		fr2:SetPoint("TOP", fr1 or UIParent, "BOTTOM", 0, -5)
+	end
 end
 
 function f:PLAYER_LOGIN()
